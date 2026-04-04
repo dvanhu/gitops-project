@@ -137,5 +137,3 @@ ArgoCD will then keep the cluster in sync with whatever is declared in the repos
 - **Separation of concerns** — app code and deployment config are clearly divided
 - **Automated delivery** — zero manual steps from commit to running pod
 - **Lightweight app** — simple HTML + Dockerfile, focus is entirely on the pipeline
-
----
