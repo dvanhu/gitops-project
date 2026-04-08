@@ -303,4 +303,4 @@ CMD ["nginx", "-g", "daemon off;"]
 
 | Repository | Purpose |
 |---|---|
-| [`gitops-multi-env-deployment`](https://github.com/your-org/gitops-multi-env-deployment) | Kubernetes manifests, Kustomize overlays, and ArgoCD configuration for multi-environment deployment |
+| [`gitops-multi-env-deployment`](https://github.com/dvanhu/gitops-multi-env-deployment) | Kubernetes manifests, Kustomize overlays, and ArgoCD configuration for multi-environment deployment |
