@@ -10,7 +10,7 @@
 
 This repository contains the application source code and the Continuous Integration (CI) pipeline for a production-grade GitOps platform. It is responsible for building and publishing Docker images and propagating new image tags to the GitOps configuration repository, which drives automated deployments via ArgoCD.
 
-This repository forms the **CI layer** of a two-repository GitOps architecture. The corresponding CD layer is maintained in [`gitops-multi-env-deployment`](https://github.com/your-org/gitops-multi-env-deployment).
+This repository forms the **CI layer** of a two-repository GitOps architecture. The corresponding CD layer is maintained in [`gitops-multi-env-deployment`](https://github.com/dvanhu/gitops-multi-env-deployment).
 
 ---
 
