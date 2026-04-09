@@ -1,8 +1,8 @@
 # gitops-project
 
 [![CI Pipeline](https://img.shields.io/github/actions/workflow/status/your-org/gitops-project/ci.yml?branch=main&label=CI%20Pipeline&logo=github-actions&logoColor=white)](https://github.com/your-org/gitops-project/actions)
-[![Docker Image](https://img.shields.io/docker/pulls/your-dockerhub-username/nginx-app?label=Docker%20Pulls&logo=docker&logoColor=white)](https://hub.docker.com/r/your-dockerhub-username/nginx-app)
-[![Docker Image Version](https://img.shields.io/docker/v/your-dockerhub-username/nginx-app?label=Image%20Version&logo=docker)](https://hub.docker.com/r/your-dockerhub-username/nginx-app)
+[![Docker Image](https://img.shields.io/docker/pulls/dvanhu/gitops-nginx?label=Docker%20Pulls&logo=docker&logoColor=white)](https://hub.docker.com/repository/docker/dvanhu/gitops-nginx)
+[![Docker Image Version](https://img.shields.io/docker/v/dvanhu/gitops-nginx?label=Image%20Version&logo=docker)](https://hub.docker.com/repository/docker/dvanhu/gitops-nginx)
 
 ---
 
@@ -108,6 +108,8 @@ docker push your-dockerhub-username/nginx-app:${GITHUB_SHA::7}
 docker push your-dockerhub-username/nginx-app:latest
 ```
 
+> The published Docker image for this project is available at: [dvanhu/gitops-nginx](https://hub.docker.com/repository/docker/dvanhu/gitops-nginx)
+
 ### Stage 5 — GitOps Repository Update
 
 This is the critical bridge between the CI and CD layers. The pipeline authenticates to GitHub using a Personal Access Token (`GITOPS_PAT`), clones the `gitops-multi-env-deployment` repository, and uses `sed` to update the image tag in the base `deployment.yaml`. It then commits and pushes the change, which ArgoCD detects and uses to trigger a deployment.
@@ -163,6 +165,7 @@ jobs:
             ./app-code
 
       - name: Push Docker image to DockerHub
+        # Published image: https://hub.docker.com/repository/docker/dvanhu/gitops-nginx
         run: |
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/nginx-app:${GITHUB_SHA::7}
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/nginx-app:latest
@@ -186,11 +189,11 @@ jobs:
 
 The following secrets must be configured in the repository under **Settings > Secrets and variables > Actions** before the pipeline can execute successfully.
 
-| Secret Name         | Description                                                                 | Required |
-|---------------------|-----------------------------------------------------------------------------|----------|
-| `DOCKERHUB_USERNAME`| Your DockerHub account username                                             | Yes      |
-| `DOCKERHUB_TOKEN`   | DockerHub access token (generated under Account Settings > Security)        | Yes      |
-| `GITOPS_PAT`        | GitHub Personal Access Token with `repo` scope for the GitOps repository    | Yes      |
+| Secret Name          | Description                                                                 | Required |
+|----------------------|-----------------------------------------------------------------------------|----------|
+| `DOCKERHUB_USERNAME` | Your DockerHub account username                                             | Yes      |
+| `DOCKERHUB_TOKEN`    | DockerHub access token (generated under Account Settings > Security)        | Yes      |
+| `GITOPS_PAT`         | GitHub Personal Access Token with `repo` scope for the GitOps repository    | Yes      |
 
 ### Generating a DockerHub Access Token
 
@@ -299,8 +302,9 @@ CMD ["nginx", "-g", "daemon off;"]
 
 ---
 
-## Related Repository
+## Related Repositories
 
 | Repository | Purpose |
 |---|---|
 | [`gitops-multi-env-deployment`](https://github.com/dvanhu/gitops-multi-env-deployment) | Kubernetes manifests, Kustomize overlays, and ArgoCD configuration for multi-environment deployment |
+| [`dvanhu/gitops-nginx`](https://hub.docker.com/repository/docker/dvanhu/gitops-nginx) | Published Docker image built and pushed by the CI pipeline |
