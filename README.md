@@ -1,6 +1,5 @@
 # gitops-project
-
-[![CI Pipeline](https://img.shields.io/github/actions/workflow/status/your-org/gitops-project/ci.yml?branch=main&label=CI%20Pipeline&logo=github-actions&logoColor=white)](https://github.com/your-org/gitops-project/actions)
+[![CI Pipeline](https://github.com/dvanhu/gitops-project/actions/workflows/ci.yaml/badge.svg)](https://github.com/dvanhu/gitops-project/actions/workflows/ci.yaml)
 [![Docker Image](https://img.shields.io/docker/pulls/dvanhu/gitops-nginx?label=Docker%20Pulls&logo=docker&logoColor=white)](https://hub.docker.com/repository/docker/dvanhu/gitops-nginx)
 [![Docker Image Version](https://img.shields.io/docker/v/dvanhu/gitops-nginx?label=Image%20Version&logo=docker)](https://hub.docker.com/repository/docker/dvanhu/gitops-nginx)
 
